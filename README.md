@@ -1,6 +1,6 @@
 # Social Links Extended
 
-> Extends the Social Icons block with additional social networks.
+> Extends the Social Icons block with additional features.
 
 ## Description
 
