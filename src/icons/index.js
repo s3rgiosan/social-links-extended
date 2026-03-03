@@ -1,0 +1,16 @@
+export { KofiIcon } from './kofi';
+export { PhoneIcon } from './phone';
+export { SignalIcon } from './signal';
+export { BoardGameArenaIcon } from './boardgamearena';
+export { BoardGameGeekIcon } from './boardgamegeek';
+export { ImdbIcon } from './imdb';
+export { LetterboxdIcon } from './letterboxd';
+export { CalendlyIcon } from './calendly';
+export { CalcomIcon } from './calcom';
+export { StravaIcon } from './strava';
+export { TripAdvisorIcon } from './tripadvisor';
+export { PaypalIcon } from './paypal';
+export { YoutubeMusicIcon } from './youtubemusic';
+export { ApplePodcastsIcon } from './applepodcasts';
+export { NotionIcon } from './notion';
+export { SquarespaceIcon } from './squarespace';

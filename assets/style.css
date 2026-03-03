@@ -1,0 +1,152 @@
+/**
+ * Brand colors for custom social networks.
+ *
+ * Follows the same pattern as WordPress core social-links block styles.
+ * @see wp-includes/blocks/social-links/style.css
+ */
+
+/* Default style: brand color background, white icon */
+:where(.wp-block-social-links:not(.is-style-logos-only)) .wp-social-link-kofi {
+	background-color: #ff6433;
+	color: #fff;
+}
+
+:where(.wp-block-social-links:not(.is-style-logos-only)) .wp-social-link-phone {
+	background-color: #333;
+	color: #fff;
+}
+
+:where(.wp-block-social-links:not(.is-style-logos-only)) .wp-social-link-signal {
+	background-color: #3b45fd;
+	color: #fff;
+}
+
+:where(.wp-block-social-links:not(.is-style-logos-only)) .wp-social-link-boardgamearena {
+	background-color: #fff;
+	color: #000;
+}
+
+:where(.wp-block-social-links:not(.is-style-logos-only)) .wp-social-link-boardgamegeek {
+	background-color: #ff5100;
+	color: #fff;
+}
+
+:where(.wp-block-social-links:not(.is-style-logos-only)) .wp-social-link-imdb {
+	background-color: #f5c518;
+	color: #fff;
+}
+
+:where(.wp-block-social-links:not(.is-style-logos-only)) .wp-social-link-letterboxd {
+	background-color: #202830;
+	color: #fff;
+}
+
+:where(.wp-block-social-links:not(.is-style-logos-only)) .wp-social-link-calendly {
+	background-color: #006bff;
+	color: #fff;
+}
+
+:where(.wp-block-social-links:not(.is-style-logos-only)) .wp-social-link-calcom {
+	background-color: #292929;
+	color: #fff;
+}
+
+:where(.wp-block-social-links:not(.is-style-logos-only)) .wp-social-link-strava {
+	background-color: #fc4c02;
+	color: #fff;
+}
+
+:where(.wp-block-social-links:not(.is-style-logos-only)) .wp-social-link-tripadvisor {
+	background-color: #34e0a1;
+	color: #fff;
+}
+
+:where(.wp-block-social-links:not(.is-style-logos-only)) .wp-social-link-paypal {
+	background-color: #002991;
+	color: #fff;
+}
+
+:where(.wp-block-social-links:not(.is-style-logos-only)) .wp-social-link-youtubemusic {
+	background-color: #f00;
+	color: #fff;
+}
+
+:where(.wp-block-social-links:not(.is-style-logos-only)) .wp-social-link-applepodcasts {
+	background-color: #93c;
+	color: #fff;
+}
+
+:where(.wp-block-social-links:not(.is-style-logos-only)) .wp-social-link-notion {
+	background-color: #000;
+	color: #fff;
+}
+
+:where(.wp-block-social-links:not(.is-style-logos-only)) .wp-social-link-squarespace {
+	background-color: #000;
+	color: #fff;
+}
+
+/* Logos-only style: brand color icon, no background */
+:where(.wp-block-social-links.is-style-logos-only) .wp-social-link-kofi {
+	color: #ff6433;
+}
+
+:where(.wp-block-social-links.is-style-logos-only) .wp-social-link-phone {
+	color: #333;
+}
+
+:where(.wp-block-social-links.is-style-logos-only) .wp-social-link-signal {
+	color: #3b45fd;
+}
+
+:where(.wp-block-social-links.is-style-logos-only) .wp-social-link-boardgamearena {
+	color: #000;
+}
+
+:where(.wp-block-social-links.is-style-logos-only) .wp-social-link-boardgamegeek {
+	color: #ff5100;
+}
+
+:where(.wp-block-social-links.is-style-logos-only) .wp-social-link-imdb {
+	color: #f5c518;
+}
+
+:where(.wp-block-social-links.is-style-logos-only) .wp-social-link-letterboxd {
+	color: #202830;
+}
+
+:where(.wp-block-social-links.is-style-logos-only) .wp-social-link-calendly {
+	color: #006bff;
+}
+
+:where(.wp-block-social-links.is-style-logos-only) .wp-social-link-calcom {
+	color: #292929;
+}
+
+:where(.wp-block-social-links.is-style-logos-only) .wp-social-link-strava {
+	color: #fc4c02;
+}
+
+:where(.wp-block-social-links.is-style-logos-only) .wp-social-link-tripadvisor {
+	color: #34e0a1;
+}
+
+:where(.wp-block-social-links.is-style-logos-only) .wp-social-link-paypal {
+	color: #002991;
+}
+
+:where(.wp-block-social-links.is-style-logos-only) .wp-social-link-youtubemusic {
+	color: #f00;
+}
+
+:where(.wp-block-social-links.is-style-logos-only) .wp-social-link-applepodcasts {
+	color: #93c;
+}
+
+:where(.wp-block-social-links.is-style-logos-only) .wp-social-link-notion {
+	color: #000;
+}
+
+:where(.wp-block-social-links.is-style-logos-only) .wp-social-link-squarespace {
+	color: #000;
+}

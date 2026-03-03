@@ -1,0 +1,38 @@
+{
+  "name": "social-links-extended",
+  "version": "0.1.0",
+  "description": "Extends the Social Links block with additional features.",
+  "contributors": [
+    {
+      "name": "Sérgio Santos",
+      "url": "https://s3rgiosan.dev"
+    }
+  ],
+  "license": "GPL-3.0-or-later",
+  "main": "build/index.js",
+  "scripts": {
+    "build": "wp-scripts build --blocks-manifest",
+    "format": "wp-scripts format",
+    "lint:css": "wp-scripts lint-style",
+    "lint:js": "wp-scripts lint-js",
+    "packages-update": "wp-scripts packages-update",
+    "plugin-zip": "wp-scripts plugin-zip",
+    "start": "wp-scripts start --blocks-manifest"
+  },
+  "devDependencies": {
+    "@wordpress/scripts": "^30.21.0",
+    "postcss": "^8.4.21",
+    "postcss-import": "^15.1.0",
+    "postcss-mixins": "^9.0.4",
+    "postcss-preset-env": "^8.1.0"
+  },
+  "files": [
+    "assets/**",
+    "build/**",
+    "vendor/**",
+    "plugin.php",
+    "changelog.*",
+    "license.*",
+    "readme.*"
+  ]
+}
