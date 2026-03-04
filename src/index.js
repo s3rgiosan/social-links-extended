@@ -2,7 +2,7 @@
 /**
  * WordPress dependencies
  */
-import { registerBlockVariation } from '@wordpress/blocks';
+import { hasBlockSupport, registerBlockVariation } from '@wordpress/blocks';
 import { InspectorControls } from '@wordpress/block-editor';
 import { ExternalLink, __experimentalText as Text, PanelBody } from '@wordpress/components';
 import { createInterpolateElement } from '@wordpress/element';
@@ -31,10 +31,12 @@ const addInspectorControls = (BlockEdit) => (props) => {
 		return <BlockEdit {...props} />;
 	}
 
+	const inspectorGroup = hasBlockSupport(name, 'listView') ? 'list' : undefined;
+
 	return (
 		<>
 			<BlockEdit {...props} />
-			<InspectorControls group="list">
+			<InspectorControls group={inspectorGroup}>
 				<PanelBody>
 					<Text as="span" variant="muted">
 						{createInterpolateElement(
