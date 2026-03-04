@@ -32,31 +32,23 @@ Adds 16 additional social networks to the WordPress core Social Icons block:
 
 ### Manual Installation
 
-1. Download the plugin ZIP file from the [GitHub repository](https://github.com/s3rgiosan/social-links-extended).
+1. Download the plugin ZIP file from the GitHub repository.
 2. Go to Plugins > Add New > Upload Plugin in your WordPress admin area.
 3. Upload the ZIP file and click Install Now.
 4. Activate the plugin.
 
 ### Install with Composer
 
-Add the GitHub repository to your `composer.json`:
+To include this plugin as a dependency in your Composer-managed WordPress project:
 
-```json
-{
-  "repositories": [
-    {
-      "type": "vcs",
-      "url": "https://github.com/s3rgiosan/social-links-extended"
-    }
-  ]
-}
-```
-
-Then require the plugin:
+1. Add the plugin to your project using the following command:
 
 ```bash
 composer require s3rgiosan/social-links-extended
 ```
+
+2. Run `composer install` to install the plugin.
+3. Activate the plugin from your WordPress admin area or using WP-CLI.
 
 ## Icons
 
