@@ -47,7 +47,7 @@ To include this plugin as a dependency in your Composer-managed WordPress projec
 composer require s3rgiosan/social-links-extended
 ```
 
-2. Run `composer install` to install the plugin.
+2. Run `composer install`.
 3. Activate the plugin from your WordPress admin area or using WP-CLI.
 
 ## Icons
