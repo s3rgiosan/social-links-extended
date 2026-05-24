@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file, per [the Ke
 
 ## [Unreleased]
 
+## [1.3.0] - 2026-05-23
+
+- Add custom icons to the core Icon block picker (requires the [Icons Extended](https://github.com/s3rgiosan/icons-extended) plugin).
+- Refactor icon definitions to a single source: labels in PHP, SVG markup in `assets/icons/`.
+- Fix custom social network brand colors not showing in the editor canvas.
+
 ## [1.2.1] - 2026-05-08
 
 - Added automated GitHub Release packaging via reusable release workflow; installation now points to the latest release ZIP.
