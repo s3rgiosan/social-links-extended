@@ -7,5 +7,7 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'Composer\\InstalledVersions' => $vendorDir . '/composer/InstalledVersions.php',
+    'S3S\\WP\\SocialLinksExtended\\IconBlock' => $baseDir . '/includes/IconBlock.php',
+    'S3S\\WP\\SocialLinksExtended\\Icons' => $baseDir . '/includes/Icons.php',
     'S3S\\WP\\SocialLinksExtended\\Plugin' => $baseDir . '/includes/Plugin.php',
 );

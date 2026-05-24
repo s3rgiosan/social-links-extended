@@ -30,6 +30,8 @@ class Plugin {
 		add_filter( 'block_core_social_link_get_services', [ $this, 'register_services' ] );
 		add_action( 'enqueue_block_assets', [ $this, 'enqueue_assets' ] );
 		add_filter( 'block_type_metadata', [ $this, 'block_metadata' ] );
+
+		( new IconBlock() )->setup();
 	}
 
 	/**
@@ -40,76 +42,14 @@ class Plugin {
 	 */
 	public function register_services( $services ) {
 
-		$icons_dir = S3S_SOCIAL_LINKS_EXTENDED_PATH . 'assets/icons/';
+		foreach ( Icons::get_data() as $slug => $data ) {
+			$services[ $slug ] = array(
+				'name' => $data['label'],
+				'icon' => $data['svg'],
+			);
+		}
 
-		$custom_services = array(
-			'kofi'           => array(
-				'name' => _x( 'Ko-fi', 'social link name', 'social-links-extended' ),
-				'icon' => $this->read_file( $icons_dir . 'kofi.svg' ),
-			),
-			'phone'          => array(
-				'name' => _x( 'Phone', 'social link name', 'social-links-extended' ),
-				'icon' => $this->read_file( $icons_dir . 'phone.svg' ),
-			),
-			'signal'         => array(
-				'name' => _x( 'Signal', 'social link name', 'social-links-extended' ),
-				'icon' => $this->read_file( $icons_dir . 'signal.svg' ),
-			),
-			'boardgamearena' => array(
-				'name' => _x( 'Board Game Arena', 'social link name', 'social-links-extended' ),
-				'icon' => $this->read_file( $icons_dir . 'boardgamearena.svg' ),
-			),
-			'boardgamegeek'  => array(
-				'name' => _x( 'Board Game Geek', 'social link name', 'social-links-extended' ),
-				'icon' => $this->read_file( $icons_dir . 'boardgamegeek.svg' ),
-			),
-			'imdb'           => array(
-				'name' => _x( 'IMDb', 'social link name', 'social-links-extended' ),
-				'icon' => $this->read_file( $icons_dir . 'imdb.svg' ),
-			),
-			'letterboxd'     => array(
-				'name' => _x( 'Letterboxd', 'social link name', 'social-links-extended' ),
-				'icon' => $this->read_file( $icons_dir . 'letterboxd.svg' ),
-			),
-			'calendly'       => array(
-				'name' => _x( 'Calendly', 'social link name', 'social-links-extended' ),
-				'icon' => $this->read_file( $icons_dir . 'calendly.svg' ),
-			),
-			'calcom'         => array(
-				'name' => _x( 'Cal.com', 'social link name', 'social-links-extended' ),
-				'icon' => $this->read_file( $icons_dir . 'calcom.svg' ),
-			),
-			'strava'         => array(
-				'name' => _x( 'Strava', 'social link name', 'social-links-extended' ),
-				'icon' => $this->read_file( $icons_dir . 'strava.svg' ),
-			),
-			'tripadvisor'    => array(
-				'name' => _x( 'TripAdvisor', 'social link name', 'social-links-extended' ),
-				'icon' => $this->read_file( $icons_dir . 'tripadvisor.svg' ),
-			),
-			'paypal'         => array(
-				'name' => _x( 'PayPal', 'social link name', 'social-links-extended' ),
-				'icon' => $this->read_file( $icons_dir . 'paypal.svg' ),
-			),
-			'youtubemusic'   => array(
-				'name' => _x( 'YouTube Music', 'social link name', 'social-links-extended' ),
-				'icon' => $this->read_file( $icons_dir . 'youtubemusic.svg' ),
-			),
-			'applepodcasts'  => array(
-				'name' => _x( 'Apple Podcasts', 'social link name', 'social-links-extended' ),
-				'icon' => $this->read_file( $icons_dir . 'applepodcasts.svg' ),
-			),
-			'notion'         => array(
-				'name' => _x( 'Notion', 'social link name', 'social-links-extended' ),
-				'icon' => $this->read_file( $icons_dir . 'notion.svg' ),
-			),
-			'squarespace'    => array(
-				'name' => _x( 'Squarespace', 'social link name', 'social-links-extended' ),
-				'icon' => $this->read_file( $icons_dir . 'squarespace.svg' ),
-			),
-		);
-
-		return array_merge( $services, $custom_services );
+		return $services;
 	}
 
 	/**
@@ -140,6 +80,17 @@ class Plugin {
 		);
 
 		wp_set_script_translations( 'social-links-extended-editor-script', 'social-links-extended' );
+
+		// Co-located with registration so the handle is guaranteed to exist; the
+		// editor script reads these labels from the global. PHP is the single
+		// source for the labels. Editor only.
+		if ( is_admin() ) {
+			wp_localize_script(
+				'social-links-extended-editor-script',
+				'socialLinksExtendedIcons',
+				Icons::get_labels()
+			);
+		}
 
 		wp_register_style(
 			'social-links-extended-style',
@@ -184,25 +135,5 @@ class Plugin {
 		}
 
 		return $metadata;
-	}
-
-	/**
-	 * Read a file using WP_Filesystem.
-	 *
-	 * @param string $file Absolute path to the file.
-	 * @return string File contents or empty string on failure.
-	 */
-	private function read_file( $file ) {
-		global $wp_filesystem;
-
-		if ( ! function_exists( 'WP_Filesystem' ) ) {
-			require_once ABSPATH . 'wp-admin/includes/file.php';
-		}
-
-		if ( ! WP_Filesystem() ) {
-			return '';
-		}
-
-		return (string) $wp_filesystem->get_contents( $file );
 	}
 }

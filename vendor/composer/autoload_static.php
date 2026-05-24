@@ -11,14 +11,14 @@ class ComposerStaticInit8702f0358e9b581a2937d8210325f67d
     );
 
     public static $prefixLengthsPsr4 = array (
-        'S' => 
+        'S' =>
         array (
             'S3S\\WP\\SocialLinksExtended\\' => 27,
         ),
     );
 
     public static $prefixDirsPsr4 = array (
-        'S3S\\WP\\SocialLinksExtended\\' => 
+        'S3S\\WP\\SocialLinksExtended\\' =>
         array (
             0 => __DIR__ . '/../..' . '/includes',
         ),
@@ -26,6 +26,8 @@ class ComposerStaticInit8702f0358e9b581a2937d8210325f67d
 
     public static $classMap = array (
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
+        'S3S\\WP\\SocialLinksExtended\\IconBlock' => __DIR__ . '/../..' . '/includes/IconBlock.php',
+        'S3S\\WP\\SocialLinksExtended\\Icons' => __DIR__ . '/../..' . '/includes/Icons.php',
         'S3S\\WP\\SocialLinksExtended\\Plugin' => __DIR__ . '/../..' . '/includes/Plugin.php',
     );
 
