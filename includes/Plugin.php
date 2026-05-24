@@ -28,7 +28,8 @@ class Plugin {
 	 */
 	public function setup() {
 		add_filter( 'block_core_social_link_get_services', [ $this, 'register_services' ] );
-		add_action( 'enqueue_block_assets', [ $this, 'enqueue_assets' ] );
+		add_action( 'init', [ $this, 'register_assets' ] );
+		add_action( 'enqueue_block_assets', [ $this, 'enqueue_editor_style' ] );
 		add_filter( 'block_type_metadata', [ $this, 'block_metadata' ] );
 
 		( new IconBlock() )->setup();
@@ -55,9 +56,14 @@ class Plugin {
 	/**
 	 * Register assets for the block.
 	 *
+	 * Hooked to `init` (not `enqueue_block_assets`) so the handles exist before
+	 * core's `wp_enqueue_registered_block_scripts_and_styles` gathers block
+	 * styles for the editor iframe; otherwise the brand-color stylesheet is
+	 * skipped in the editor while still loading on the front end.
+	 *
 	 * @return void
 	 */
-	public function enqueue_assets() {
+	public function register_assets() {
 
 		$asset_file = sprintf(
 			'%s/build/index.asset.php',
@@ -98,6 +104,25 @@ class Plugin {
 			[],
 			$version,
 		);
+	}
+
+	/**
+	 * Load the brand-color stylesheet into the editor canvas.
+	 *
+	 * On the front end the stylesheet rides along with the block's `style`
+	 * handle when the block renders. The editor canvas, however, loads block
+	 * styles from the combined block-library stylesheet and skips separately
+	 * registered handles, so the brand colors must be enqueued directly here.
+	 *
+	 * @return void
+	 */
+	public function enqueue_editor_style() {
+
+		if ( ! is_admin() ) {
+			return;
+		}
+
+		wp_enqueue_style( 'social-links-extended-style' );
 	}
 
 	/**
