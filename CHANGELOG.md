@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file, per [the Ke
 
 ## [Unreleased]
 
+### Added
+
+- "Try in WordPress Playground" README button backed by `.wp-playground/blueprint.json`, seeded with a demo post containing a Social Icons block that uses the new networks.
+
 ## [1.3.0] - 2026-05-23
 
 - Add custom icons to the core Icon block picker (requires the [Icons Extended](https://github.com/s3rgiosan/icons-extended) plugin).

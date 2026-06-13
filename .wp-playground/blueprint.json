@@ -1,0 +1,28 @@
+{
+  "$schema": "https://playground.wordpress.net/blueprint-schema.json",
+  "landingPage": "/?playground_demo=1",
+  "preferredVersions": { "php": "8.3", "wp": "latest" },
+  "login": true,
+  "steps": [
+    {
+      "step": "writeFile",
+      "path": "/wordpress/wp-content/mu-plugins/playground-demo.php",
+      "data": "<?php\nadd_action('template_redirect', function () {\n    if (empty($_GET['playground_demo'])) {\n        return;\n    }\n    $post = get_page_by_path('playground-demo', OBJECT, 'post');\n    if ($post) {\n        wp_safe_redirect(admin_url(\"post.php?post={$post->ID}&action=edit\"));\n        exit;\n    }\n    wp_safe_redirect(admin_url('post-new.php'));\n    exit;\n});\n"
+    },
+    {
+      "step": "installPlugin",
+      "pluginData": {
+        "resource": "git:directory",
+        "url": "https://github.com/s3rgiosan/social-links-extended",
+        "ref": "main",
+        "refType": "branch",
+        "path": "/"
+      },
+      "options": { "activate": true }
+    },
+    {
+      "step": "runPHP",
+      "code": "<?php require '/wordpress/wp-load.php'; $content = '<!-- wp:paragraph --><p>Open the block inserter, search for <strong>Social Icon</strong>, and try one of the 16 networks this plugin adds (Letterboxd, Ko-fi, Strava, Cal.com, Notion, and more).</p><!-- /wp:paragraph -->'.\"\\n\\n\".'<!-- wp:social-links -->'.\"\\n\".'<ul class=\"wp-block-social-links\"><!-- wp:social-link {\"url\":\"https://letterboxd.com/\",\"service\":\"letterboxd\"} /--><!-- wp:social-link {\"url\":\"https://ko-fi.com/\",\"service\":\"kofi\"} /--><!-- wp:social-link {\"url\":\"https://www.strava.com/\",\"service\":\"strava\"} /--><!-- wp:social-link {\"url\":\"https://cal.com/\",\"service\":\"calcom\"} /--><!-- wp:social-link {\"url\":\"https://www.notion.so/\",\"service\":\"notion\"} /--></ul>'.\"\\n\".'<!-- /wp:social-links -->'; wp_insert_post(['post_title'=>'Social Links Extended Demo','post_name'=>'playground-demo','post_status'=>'draft','post_type'=>'post','post_content'=>$content]);"
+    }
+  ]
+}

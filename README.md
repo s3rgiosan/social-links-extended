@@ -2,6 +2,8 @@
 
 > Extends the Social Icons block with additional features.
 
+[![Try in WordPress Playground](https://img.shields.io/badge/Try%20in-WordPress%20Playground-3858E9?logo=wordpress&logoColor=white)](https://playground.wordpress.net/?blueprint-url=https://raw.githubusercontent.com/s3rgiosan/social-links-extended/main/.wp-playground/blueprint.json)
+
 ## Description
 
 Adds 16 additional social networks to the WordPress core Social Icons block:
